@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "lee-to/moonshine-tree-resource": "^0.2.1",
+        "livewire/livewire": "^2.12",
         "moonshine/moonshine": "^1.61",
         "spatie/laravel-medialibrary": "^10.0.0",
         "sweet1s/moonshine-database": "^1.0",
