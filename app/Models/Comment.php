@@ -10,19 +10,19 @@ class Comment extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'title',
         'text',
-        'user_id',
-        'article_id',
     ];
+
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
 
     public function user():BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-    public function article():BelongsTo
-    {
-        return $this->belongsTo(Article::class);
     }
 
 

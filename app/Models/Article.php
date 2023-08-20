@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Commentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,6 +19,7 @@ class Article extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+    use Commentable;
 
     protected $fillable = [
         'title',
@@ -32,21 +34,17 @@ class Article extends Model implements HasMedia
     protected $casts = [
     ];
 
-    public function user():BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function comments():HasMany
-    {
-       return $this->hasMany(Comment::class);
-    }
 
-    public function categories():BelongsToMany
+    public function categories(): BelongsToMany
     {
-       return $this->belongsToMany(Category::class)
-           ->withTimestamps()
-           ->withPivot(['is_published', 'priority']);
+        return $this->belongsToMany(Category::class)
+            ->withTimestamps()
+            ->withPivot(['is_published', 'priority']);
     }
 
 
@@ -65,12 +63,14 @@ class Article extends Model implements HasMedia
     {
         $this->addMediaCollection('gallery');
     }
-    public function registerAllMediaConversions( Media $media = null): void
+
+    public function registerAllMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-                     ->width('200')
-                     ->height('200');
+            ->width('200')
+            ->height('200');
     }
+
 
 
 

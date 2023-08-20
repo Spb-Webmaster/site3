@@ -29,10 +29,11 @@
 
                     </x-fancybox>
 
-
-
                 </div>
 
+                <div class="card-body">
+                    @livewire('comment', ['model' => $post ])
+                </div>
 
                 <div class="card-body">
                     <p class="card-text">{{ $post->title }}</p>

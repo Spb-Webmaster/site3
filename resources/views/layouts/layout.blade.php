@@ -6,6 +6,7 @@
     <title>Bootstrap demo</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    @livewireStyles
 </head>
 <body class="bg-body-tertiary">
 
@@ -14,6 +15,7 @@
 @yield('content')
 
 <script src="/js/bootstrap.bundle.min.js"></script>
+@livewireScripts
 </body>
 </html>
 
